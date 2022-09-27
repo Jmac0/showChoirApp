@@ -4,6 +4,7 @@ import { MemberQrCode } from './MemberQrCode';
 import { Account } from './Account';
 import { SignUP } from './SignUp';
 import { SplashScreen } from './SplashScreen';
+import { fonts } from '../styles/Styles';
 
 export const BottomTabsNavigator: React.FC = () => {
   const BottomTabs = createBottomTabNavigator();
@@ -21,7 +22,10 @@ export const BottomTabsNavigator: React.FC = () => {
   return (
     <BottomTabs.Navigator
       screenOptions={({}) => ({
-        headerTitleStyle: { fontSize: 20 },
+        headerTitleStyle: {
+          fontSize: 30,
+          fontFamily: fonts.fontFamilyBold,
+        },
       })}>
       {isAuth ? (
         /*** authenticated user screens ***/

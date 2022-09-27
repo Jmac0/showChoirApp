@@ -3,13 +3,26 @@ import { View, StyleSheet } from 'react-native';
 import { StyledTextInput } from '../styles/Styles';
 // TODO delete unused @types and packages
 export const SignUP: React.FC = () => {
-  const [text, setText] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   return (
     <View style={styles.container}>
       <StyledTextInput
-        placeholder="Type here to translate!"
-        onChangeText={(newText: string) => setText(newText)}
-        defaultValue={text}
+        placeholder="First Name"
+        onChangeText={(newText: string) => setFirstName(newText)}
+        defaultValue={firstName}
+      />
+      <StyledTextInput
+        placeholder="Sir Name"
+        onChangeText={(newText: string) => setLastName(newText)}
+        defaultValue={lastName}
+      />
+      <StyledTextInput
+        keyboardType="email-address"
+        placeholder="Email"
+        onChangeText={(newText: string) => setEmail(newText)}
+        defaultValue={email}
       />
     </View>
   );
