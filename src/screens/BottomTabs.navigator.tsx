@@ -8,6 +8,7 @@ import { SplashScreen } from './SplashScreen';
 export const BottomTabsNavigator: React.FC = () => {
   const BottomTabs = createBottomTabNavigator();
   const [isLoading, setIsLoading] = useState(true);
+  // boolean value, checking for authenticated user
   const [isAuth, setIsAuth] = useState(false);
   setTimeout(() => {
     setIsLoading(false);

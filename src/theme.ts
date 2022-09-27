@@ -1,6 +1,13 @@
+// @ts-ignore
 export const theme = {
   // colors
-  gold: '#272727',
-  darkGrey: '#CCB136',
+  darkGrey: '#272727',
+  gold: '#CCB136',
   // fonts
+
+  textInput: {
+    height: 40,
+    marginTop: 100,
+    borderWidth: 3,
+  },
 };
