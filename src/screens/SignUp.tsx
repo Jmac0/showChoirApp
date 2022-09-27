@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
-import { theme } from '../theme';
-
+import { View, StyleSheet } from 'react-native';
+import { StyledTextInput } from '../styles/Styles';
+// TODO delete unused @types and packages
 export const SignUP: React.FC = () => {
   const [text, setText] = useState('');
   return (
     <View style={styles.container}>
-      <TextInput
-        style={theme.textInput}
+      <StyledTextInput
         placeholder="Type here to translate!"
-        onChangeText={newText => setText(newText)}
+        onChangeText={(newText: string) => setText(newText)}
         defaultValue={text}
       />
     </View>
@@ -20,6 +19,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    //backgroundColor: theme.darkGrey,
   },
 });
