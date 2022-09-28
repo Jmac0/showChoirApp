@@ -24,7 +24,7 @@ export const BottomTabsNavigator: React.FC = () => {
       screenOptions={({}) => ({
         headerTitleStyle: {
           fontSize: 30,
-          fontFamily: fonts.fontFamilyBold,
+          fontFamily: fonts.fontFamilyHeader,
         },
       })}>
       {isAuth ? (
