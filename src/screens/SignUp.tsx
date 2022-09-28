@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { StyledButton, StyledTextInput } from '../styles/Styles';
+import { useForm, Controller } from 'react-hook-form';
+import { StyledButton, StyledTextInput, ButtonText } from '../styles/Styles';
 // TODO delete unused @types and packages
 type signUpFormType = {
   firstName: string;
@@ -8,49 +9,82 @@ type signUpFormType = {
   email: string;
 };
 export const SignUP: React.FC = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  // from react-hook-form
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+    },
+  });
 
-  const signUpForm: signUpFormType = {
-    firstName,
-    lastName,
-    email,
+  const onSubmit = (data: signUpFormType) => {
+    console.warn(data);
   };
-
-  // submit form
-  const handelSubmitForm = () => {
-    // save email to local storage
-
-    // send data to API
-    console.log(signUpForm);
-  };
-
   return (
     <View style={styles.container}>
-      <StyledTextInput
-        placeholder="First Name"
-        onChangeText={(newText: string) => setFirstName(newText)}
-        defaultValue={firstName}
-      />
-      <StyledTextInput
-        placeholder="Sir Name"
-        onChangeText={(newText: string) => setLastName(newText)}
-        defaultValue={lastName}
-      />
-      <StyledTextInput
-        keyboardType="email-address"
-        placeholder="Email"
-        onChangeText={(newText: string) => setEmail(newText)}
-        defaultValue={email}
+      <View style={{ height: 20 }}>
+        {errors.firstName && <Text>Please enter your first name</Text>}
+      </View>
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <StyledTextInput
+            placeholder="First name"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            Jamie
+            value={value}
+          />
+        )}
+        name="firstName"
       />
 
-      <StyledButton
-        onPress={handelSubmitForm}
-        style={({ pressed }) => [
-          { backgroundColor: pressed ? 'red' : 'hotpink' },
-        ]}>
-        <Text>Submit</Text>
+      <View style={{ height: 20 }}>
+        {errors.lastName && <Text>Please enter your last name</Text>}
+      </View>
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <StyledTextInput
+            placeholder="Last name"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="lastName"
+      />
+      <View style={{ height: 20 }}>
+        {errors.email && <Text>Please enter your email</Text>}
+      </View>
+      <Controller
+        control={control}
+        rules={{
+          required: true,
+        }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <StyledTextInput
+            placeholder="Email"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name="email"
+      />
+      <StyledButton onPress={handleSubmit(onSubmit)}>
+        <ButtonText>Submit</ButtonText>
       </StyledButton>
     </View>
   );
