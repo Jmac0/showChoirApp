@@ -17,7 +17,8 @@ export const StyledTextInput = styled.TextInput`
   font-size: 20px;
   border-color: ${colors.darkGrey};
   border-radius: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 10px;
   border-width: 3px;
 `;
@@ -27,7 +28,6 @@ export const StyledButton = styled.Pressable`
   height: 40px;
   margin-top: 15px;
   border-radius: 20px;
-  background-color: ${colors.gold};
   justify-content: center;
   align-items: center;
 `;
