@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import {
   StyledButton,
   StyledTextInput,
   ButtonText,
   colors,
+  StyledContainer,
 } from '../styles/Styles';
-// TODO delete unused @types and packages
+import { Logo } from '../../assets/svgs/Logo';
+
 type signUpFormType = {
   firstName: string;
   lastName: string;
@@ -32,7 +34,8 @@ export const SignUP: React.FC = () => {
     console.warn(data);
   };
   return (
-    <View style={styles.container}>
+    <StyledContainer>
+      <Logo fill={colors.lightGold} stroke={colors.lightGold} size={190} />
       <View style={{ height: 15 }}>
         {errors.firstName && <Text>Please enter your first name</Text>}
       </View>
@@ -103,14 +106,6 @@ export const SignUP: React.FC = () => {
         ]}>
         <ButtonText>Submit</ButtonText>
       </StyledButton>
-    </View>
+    </StyledContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    marginTop: 80,
-  },
-});
